@@ -51,14 +51,15 @@ export default class App extends React.Component {
           style={styles.goButton}
           onPress={() => {
             var word = this.state.text.toLowerCase().trim();
-            db[word]?(
-            this.setState({ chunks: db[word].chunks }),
-            this.setState({ phonicSounds: db[word].phones })
-            ):
-            Alert.alert("The word does not exist in our database");
+            db[word] ? (
+              this.setState({ chunks: db[word].chunks }),
+              this.setState({ phonicSounds: db[word].phones })
+            ) :
+              Alert.alert("The word does not exist in our database");
           }}>
           <Text style={styles.buttonText}>GO</Text>
         </TouchableOpacity>
+        <View style={{ flexDirection: 'row', alignSelf: 'center' }}></View>
         <View>
           {this.state.chunks.map((item, index) => {
             return (
@@ -88,6 +89,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderWidth: 4,
     outline: 'none',
+    borderRadius: 20,
   },
   goButton: {
     width: '50%',
